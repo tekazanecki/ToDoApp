@@ -1,10 +1,11 @@
+from functions import *
+
+source_file = 'todo.txt'
 # loading data from file
 try:
-    with open('todos.txt', 'r') as file:
-        todos_list = file.readlines()
-        todos_list = [todo.strip('\n') for todo in todos_list]
-except:
-    print("file with save todos is not present!")
+    todo_list = get_todos(source_file)
+except FileNotFoundError as error:
+    print(error, "file with save todos is not present!")
     todos_list = []
 
 # main loop
@@ -19,8 +20,7 @@ while True:
         elif user_action[3] == ' ':
             user_todo = user_action.split(' ', 1)[1]
         todos_list.append(user_todo)
-        with open('todos.txt', 'a') as file:
-            file.write(user_todo + "\n")
+        save_todos(source_file, todos_list)
     elif user_action == 'show' or user_action == 'display':
         print("---------- TODO LIST ----------")
         for idx, todo in enumerate(todos_list):
@@ -32,9 +32,7 @@ while True:
             user_choice = int(user_choice) - 1
             edited_todo = input("On what you want to change todo:", todos_list[user_choice])
             todos_list[user_choice] = edited_todo
-            with open('todos.txt', 'w') as file:
-                for todo in todos_list:
-                    file.write(todo + "\n")
+            save_todos(source_file, todos_list)
         except IndexError:
             print("you select task that is not on the list")
         except ValueError:
@@ -47,9 +45,7 @@ while True:
         try:
             user_choice = int(user_choice) - 1
             todos_list.pop(user_choice)
-            with open('todos.txt', 'w') as file:
-                for todo in todos_list:
-                    file.write(todo + "\n")
+            save_todos(source_file, todos_list)
         except IndexError:
             print("you select task that is not on the list")
         except ValueError:
