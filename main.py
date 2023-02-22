@@ -1,6 +1,6 @@
 import functions
 import tkinter as tk
-from tkinter import ttk, Scrollbar
+from tkinter import ttk, Scrollbar, PhotoImage
 from tkinter import RIGHT, LEFT, BOTH
 
 
@@ -13,7 +13,7 @@ except FileNotFoundError as error:
 
 window = tk.Tk()
 window.title("ToDo App")
-window.geometry("260x190")
+window.geometry("280x210")
 window.resizable(False, False)
 
 # variables
@@ -36,7 +36,7 @@ scrollbar = Scrollbar(frm_list)
 listbox_todo = tk.Listbox(
     frm_list,
     listvariable=todo_list_var,
-    height=6,
+    height=7,
     selectmode=tk.SINGLE)
 
 listbox_todo.bind('<<ListboxSelect>>',
@@ -46,15 +46,18 @@ listbox_todo.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=listbox_todo.yview)
 
 # structure - buttons
+img_add = PhotoImage(file=r'icons/add.png')
+img_edit = PhotoImage(file=r'icons/edit.png')
+img_complete = PhotoImage(file=r'icons/complete.png')
 btn_add = ttk.Button(frm_buttons, text="Add",
                      command=lambda entry=ent, listbox=listbox_todo, todos=todo_list_var:
-                     functions.add_todos(entry, listbox, todos))
+                     functions.add_todos(entry, listbox, todos), image=img_add, compound=LEFT)
 btn_edit = ttk.Button(frm_buttons, text="Edit",
                       command=lambda entry=ent, listbox=listbox_todo, todos=todo_list_var:
-                      functions.edit_todos(entry, listbox, todos))
+                      functions.edit_todos(entry, listbox, todos), image=img_edit, compound=LEFT)
 btn_complete = ttk.Button(frm_buttons, text="Complete",
                           command=lambda entry=ent, listbox=listbox_todo, todos=todo_list_var:
-                          functions.delete_todos(entry, listbox, todos))
+                          functions.delete_todos(entry, listbox, todos), image=img_complete, compound=LEFT)
 
 # packing
 frame_padding = {'pady': 5,

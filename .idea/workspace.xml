@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9273aca4-e8a3-40d2-b996-6b0fe141cfce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676893784659</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Refactoring of code.">
+      <created>1677052396440</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677052396440</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,8 +124,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First functionalities (add, show, edit, complete, exit)" />
     <MESSAGE value="Exception on edit and complete." />
-    <MESSAGE value="Refactoring of code." />
     <MESSAGE value="Basic gui of todo list." />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic gui of todo list." />
+    <MESSAGE value="Refactoring of code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring of code." />
   </component>
 </project>
