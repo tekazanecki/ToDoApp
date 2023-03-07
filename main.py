@@ -1,9 +1,11 @@
 from functions import *
+# path to file with tasks
+source_file = 'todo.db'
 
-source_file = 'todo.txt'
 # loading data from file
 try:
-    todo_list = get_todos(source_file)
+    todos_list = get_todos(source_file)
+    print(todos_list)
 except FileNotFoundError as error:
     print(error, "file with save todos is not present!")
     todos_list = []
@@ -12,8 +14,8 @@ except FileNotFoundError as error:
 while True:
     # user choice
     user_action = input("Type add, show, edit, complete or exit:").strip()
-    user_action = user_action.strip()
 
+    # add task
     if user_action.startswith("add") or user_action.startswith("new"):
         if user_action == 'add' or user_action == 'new':
             user_todo = input("Enter a todo:")
@@ -21,22 +23,25 @@ while True:
             user_todo = user_action.split(' ', 1)[1]
         todos_list.append(user_todo)
         save_todos(source_file, todos_list)
+    # display tasks
     elif user_action == 'show' or user_action == 'display':
         print("---------- TODO LIST ----------")
         for idx, todo in enumerate(todos_list):
             print(f"{idx+1}-{todo}" )
         print("-------------------------------")
+    # edit task
     elif user_action == 'edit':
         user_choice = input("Chose item you want to edit:")
         try:
             user_choice = int(user_choice) - 1
-            edited_todo = input("On what you want to change todo:", todos_list[user_choice])
+            edited_todo = input("On what you want to change todo: " + todos_list[user_choice] + '\n')
             todos_list[user_choice] = edited_todo
             save_todos(source_file, todos_list)
         except IndexError:
             print("you select task that is not on the list")
         except ValueError:
             print("please use number of task that you want to edit")
+    # complete task
     elif user_action.startswith('complete '):
         if user_action == "complete":
             user_choice = input("Chose item you want to complete:")
@@ -50,8 +55,10 @@ while True:
             print("you select task that is not on the list")
         except ValueError:
             print("please use number of task that you want to complete")
+    # exit app
     elif user_action == 'exit':
         break
+    # wrong user command
     else:
         print("not any cases match!")
 
